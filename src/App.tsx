@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Container, Typography, Box, createTheme, ThemeProvider, CssBaseline } from "@mui/material";
+import TaskList from "./components/TaskList";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#1976d2",
+    },
+    background: {
+      default: "#f5f5f5",
+    },
+  },
+});
+
+const App: React.FC = () => (
+  <ThemeProvider theme={theme}>
+    <CssBaseline />
+    <Container maxWidth="md">
+      <Box sx={{ py: 4 }}>
+        <Typography variant="h3" component="h1" gutterBottom sx={{ textAlign: "center", color: "primary.main" }}>
+          Task Manager
+        </Typography>
+        <TaskList />
+      </Box>
+    </Container>
+  </ThemeProvider>
+);
 
 export default App;
